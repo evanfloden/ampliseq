@@ -57,11 +57,12 @@ Checks.hostname(workflow, params, log)
 /* --           RUN MAIN WORKFLOW              -- */
 ////////////////////////////////////////////////////
 
+include { AMPLISEQ } from './workflows/ampliseq' addParams( summary_params: summary_params )
+
 workflow {
         /*
          * SUBWORKFLOW: Run main nf-core/ampliseq analysis pipeline
          */
-        include { AMPLISEQ } from './workflows/ampliseq' addParams( summary_params: summary_params )
         AMPLISEQ ()
 }
 
